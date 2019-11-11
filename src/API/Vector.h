@@ -3,313 +3,171 @@
 #define VECTOR_H
 
 #include "../Engine/PCH.h"
-#include "QuantumAPI.h"
 
-class Vector
+namespace Quantum
 {
-public:
-	// Operators
-	void operator =(Vector v)
-	{
-		SetValues(v);
-	}
+	class Quaternion;
 
-	Vector operator +(Vector v)
+	class Vector
 	{
-		Vector Result;
-		for (int i = 0; i < 4; i++)
-		{
-			Result.Values[i] = this->Values[i] + v.Values[i];
-		}
-		return Result;
-	}
-	void operator +=(Vector v)
-	{
-		Values[0] += v.Values[0];
-		Values[1] += v.Values[1];
-		Values[2] += v.Values[2];
-		Values[3] += v.Values[3];
-	}
+	public:
+		///
+		/// Operators
+		///
 
-	Vector operator -(Vector v)
-	{
-		Vector Result;
-		for (int i = 0; i < 4; i++)
-		{
-			Result.Values[i] = this->Values[i] - v.Values[i];
-		}
-		return Result;
-	}
-	void operator -=(Vector v)
-	{
-		Values[0] -= v.Values[0];
-		Values[1] -= v.Values[1];
-		Values[2] -= v.Values[2];
-		Values[3] -= v.Values[3];
-	}
+		void operator =(Vector v);
 
-	Vector operator *(Vector v)
-	{
-		Vector Result;
-		for (int i = 0; i < 4; i++)
-		{
-			Result.Values[i] = this->Values[i] * v.Values[i];
-		}
-		return Result;
-	}
-	template<typename T>
-	Vector operator *(T rhs)
-	{
-		Vector o;
-		for (int i = 0; i < 4; i++)
-		{
-			o.Values[i] *= rhs;
-		}
-		return o;
-	}
-	template<typename T>
-	void operator *=(T rhs)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			Values[i] *= rhs;
-		}
-	}
-	void operator *=(Vector v)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			Values[i] *= v.Values[i];
-		}
-	}
+		Vector operator +(Vector v);
+		void operator +=(Vector v);
 
-	Vector operator /(Vector v)
-	{
-		Vector Result;
-		for (int i = 0; i < 4; i++)
-		{
-			Result.Values[i] = this->Values[i] / v.Values[i];
-		}
-		return Result;
-	}
-	template<typename T>
-	Vector operator /(T rhs)
-	{
-		Vector o;
-		for (int i = 0; i < 4; i++)
-		{
-			o.Values[i] /= rhs;
-		}
-		return o;
-	}
-	template<typename T>
-	void operator /=(T rhs)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			Values[i] /= rhs;
-		}
-	}
-	void operator /=(Vector v)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			Values[i] /= v.Values[i];
-		}
-	}
+		Vector operator -(Vector v);
+		void operator -=(Vector v);
 
-	// Vector Math
-	double SqrMagnitude()
-	{
-		double output = 0;
-		for (int i = 0; i < 4; i++)
-		{
-			output += Values[i] * Values[i];
-		}
-		return output;
-	}
-	double Magnitude()
-	{
-		return sqrt(SqrMagnitude());
-	}
-	void Normalise()
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			Values[i] /= Magnitude();
-		}
-	}
-	Vector Normalised() const
-	{
-		Vector v = *this;
-		v.Normalise();
-		return v;
-	}
-	static double Dot(Vector v1, Vector v2)
-	{
-		double Result;
+		template<typename T>
+		Vector operator *(T rhs);
+		Vector operator *(Vector v);
 
-		for (int i = 0; i < 4; i++)
-		{
-			Result += v1.Values[i] * v2.Values[i];
-		}
+		template<typename T>
+		void operator *=(T rhs);
+		void operator *=(Vector v);
 
-		return Result;
-	}
-	static double Distance(Vector v1, Vector v2)
-	{
-		Vector v = Direction(v1, v2);
-		return v.Magnitude();
-	}
-	static Vector Direction(Vector start, Vector end)
-	{
-		Vector v = end;
-		v -= start;
-		return v;
-	}
-	Vector DirectionTo(Vector Target)
-	{
-		return Vector::Direction(*this, Target);
-	}
-	double DistanceTo(Vector Target)
-	{
-		return Vector::Distance(*this, Target);
-	}
-	static Vector Lerp(Vector Start, Vector End, float T)
-	{
-		Vector V = Direction(Start, End);
-		float Distance = V.Magnitude();
-		return (V / Distance) * T;
-	}
-	static Vector Rotate(Vector v, Quaternion q)
-	{
+		template<typename T>
+		Vector operator /(T rhs);
+		Vector operator /(Vector v);
 
-	}
-	void Rotate(Quaternion q)
+		template<typename T>
+		void operator /=(T rhs);
+		void operator /=(Vector v);
+
+		///
+		///	 Vector Maths
+		///
+
+		//Returns the Square Magnitude of the Vector
+		double SqrMagnitude();
+		//Returns the Magnitude of the Vector
+		double Magnitude();
+		//Normalises this Vector to have a Magnitude of 1
+		void Normalise();
+		//Returns a Normalised version of this Vector, which will have a Magnitude of 1
+		Vector Normalised() const;
+		//Returns the Dot product of two Vectors
+		static double Dot(Vector v1, Vector v2);
+		//Returns the Distance between two Vectors
+		static double Distance(Vector v1, Vector v2);
+		//Returns the Direction from one Vector to another
+		static Vector Direction(Vector Start, Vector End);
+		//Returns the Direction from this Vector to another
+		Vector DirectionTo(Vector Target);
+		//Returns the Distance from this Vector to another
+		double DistanceTo(Vector Target);
+		//Returns a point between two Vectors at time T (0.0-1.0)
+		static Vector Lerp(Vector Start, Vector End, float T);
+		//Returns a Vector rotated by a given Quaternion
+		static Vector Rotate(Vector v, Quaternion q);
+		//Rotates this Vector by a given Quaternion
+		void Rotate(Quaternion q);
+		//Returns a Vector that is rotated between two Quaternions at time T (0.0-1.0)
+		static Vector Slerp(Vector V, Quaternion Start, Quaternion End, float T);
+
+		///
+		/// Constants
+		///
+		//Returns {0,1,0,0}
+		static const Vector Up();
+		//Returns {1,0,0,0}
+		static const Vector Forward();
+		//Returns {0,0,1,0}
+		static const Vector Right();
+		//Returns {0,0,0,0}
+		static const Vector Zero();
+
+	protected:
+		Vector();
+
+		void SetValues(double x, double y, double z, double w);
+		void SetValues(Vector v);
+
+		double Values[4] = { 0,0,0,0 };
+	};
+
+	class Vector2 : public Vector
 	{
+	public:
+		Vector2();
+		//Initialise with values
+		Vector2(double x, double y);
 
-	}
-	static Vector Slerp(Vector V, Quaternion Start, Quaternion End, float T)
+		//Set the values of the Vector2
+		void Set(double x, double y);
+		//Return the X value
+		double x() const;
+		//Set the X value
+		void SetX(double d);
+		//Return the Y value
+		double y() const;
+		//Set the Y value
+		void SetY(double d);
+	};
+
+	class Vector3 : public Vector
 	{
+	public:
+		Vector3();
+		//Initialise with a Vector2 and a Z value
+		Vector3(Vector2 v, double z);
+		//Initialise with values
+		Vector3(double x, double y, double z);
 
-	}
+		//Set the values of the Vector3
+		void Set(double x, double y, double z);
+		//Return the X value
+		double x() const;
+		//Set the X value
+		void SetX(double d);
+		//Return the Y value
+		double y() const;
+		//Set the Y value
+		void SetY(double d);
+		//Return the Z value
+		double z() const;
+		//Set the Z value
+		void SetZ(double d);
 
-	// Constants
-	static Vector Up()
+		//Returns the Cross product of two Vectors
+		static Vector3 Cross(Vector3 v1, Vector3 v2);
+	};
+
+	class Vector4 : public Vector
 	{
-		Vector v;
-		v.SetValues(0, 1, 0, 0);
-		return v;
-	}
-	static Vector Forward()
-	{
-		Vector v;
-		v.SetValues(0, 0, 1, 0);
-		return v;
-	}
-	static Vector Right()
-	{
-		Vector v;
-		v.SetValues(1, 0, 0, 0);
-		return v;
-	}
+	public:
+		Vector4();
+		//Initialise with two Vector2s
+		Vector4(Vector2 v1, Vector2 v2);
+		//Initialise with a Vector3 and a W value
+		Vector4(Vector3 v, double _w);
+		//Initialise with values
+		Vector4(double x, double y, double z, double w);
 
-protected:
-	Vector() {}
-
-	void SetValues(double x, double y, double z, double w)
-	{
-		Values[0] = x;
-		Values[1] = y;
-		Values[2] = z;
-		Values[3] = w;
-	}
-	void SetValues(Vector v)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			Values[i] = v.Values[i];
-		}
-	}
-
-	double Values[4] = { 0,0,0,0 };
-};
-
-class Vector2 : public Vector
-{
-public:
-	Vector2() {}
-	Vector2(double x, double y)
-	{
-		SetValues(x, y, 0, 0);
-	}
-
-	void Set(double x, double y) { Values[0] = x; Values[1] = y; }
-	double x() const { return Values[0]; }
-	void SetX(double d) { Values[0] = d; }
-	double y() const { return Values[1]; }
-	void SetY(double d) { Values[1] = d; }
-};
-
-class Vector3 : public Vector
-{
-public:
-	Vector3() {}
-	Vector3(Vector2 v, double z)
-	{
-		SetValues(v.x(), v.y(), z, 0);
-	}
-	Vector3(double x, double y, double z)
-	{
-		SetValues(x, y, z, 0);
-	}
-
-	void Set(double x, double y, double z) { Values[0] = x; Values[1] = y; Values[2] = z; }
-	double x() const { return Values[0]; }
-	void SetX(double d) { Values[0] = d; }
-	double y() const { return Values[1]; }
-	void SetY(double d) { Values[1] = d; }
-	double z() const { return Values[2]; }
-	void SetZ(double d) { Values[2] = d; }
-
-	static Vector3 Cross(Vector3 v1, Vector3 v2)
-	{
-		Vector3 Result;
-
-		Result.Values[0] = (v1.y() * v2.z()) - (v1.z() * v2.y());
-		Result.Values[1] = (v1.z() * v2.x()) - (v1.x() * v2.z());
-		Result.Values[2] = (v1.x() * v2.y()) - (v1.y() * v2.x());
-
-		return Result;
-	}
-};
-
-class Vector4 : public Vector
-{
-public:
-	Vector4() {}
-	Vector4(Vector2 v1, Vector2 v2)
-	{
-		SetValues(v1.x(), v1.y(), v2.x(), v2.y());
-	}
-	Vector4(Vector3 v, double _w)
-	{
-		SetValues(v.x(), v.y(), v.z(), 0);
-	}
-	Vector4(double x, double y, double z, double w)
-	{
-		SetValues(x, y, z, w);
-	}
-
-	void Set(double x, double y, double z, double w) { Values[0] = x; Values[1] = y; Values[2] = z; Values[3] = w; }
-	double x() const { return Values[0]; }
-	void SetX(double d) { Values[0] = d; }
-	double y() const { return Values[1]; }
-	void SetY(double d) { Values[1] = d; }
-	double z() const { return Values[2]; }
-	void SetZ(double d) { Values[2] = d; }
-	double w() const { return Values[3]; }
-	void SetW(double d) { Values[3] = d; }
-};
+		//Set the values of the Vector4
+		void Set(double x, double y, double z, double w);
+		//Return the X value
+		double x() const;
+		//Set the X value
+		void SetX(double d);
+		//Return the Y value
+		double y() const;
+		//Set the Y value
+		void SetY(double d);
+		//Return the Z value
+		double z() const;
+		//Set the Z value
+		void SetZ(double d);
+		//Return the W value
+		double w() const;
+		//Set the W value
+		void SetW(double d);
+	};
+}
 
 #endif //!VECTOR_H
