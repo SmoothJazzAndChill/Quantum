@@ -2,11 +2,15 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
 
-#include "QuantumArchitecture.h"
+#include "Object.h"
 
-class Component : public Object
+namespace Quantum
 {
-
-};
+	class Component : public Object
+	{
+	public:
+		virtual ~Component() = 0;
+	};
+}
 
 #endif //!COMPONENT_H

@@ -2,11 +2,15 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-#include "QuantumArchitecture.h"
+#include "Object.h"
 
-class Level : public Object
+namespace Quantum
 {
-	std::vector<std::shared_ptr<Entity>> Entities;
-};
+	class Level : public Object
+	{
+	public:
+		Quantum::LinkedList<std::shared_ptr<Entity>> Entities;
+	};
+}
 
 #endif //!LEVEL_H

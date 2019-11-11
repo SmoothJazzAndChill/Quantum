@@ -2,12 +2,16 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include "QuantumArchitecture.h"
+#include "../Engine/PCH.h"
+#include "../API/QuantumAPI.h"
 
-class Object
+namespace Quantum
 {
-protected:
-	Object() {}
-};
+	class Object
+	{
+	protected:
+		Object() {}
+	};
+}
 
 #endif //!OBJECT_H

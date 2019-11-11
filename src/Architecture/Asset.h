@@ -2,11 +2,14 @@
 #ifndef ASSET_H
 #define ASSET_H
 
-#include "QuantumArchitecture.h"
+#include "Object.h"
 
-class Asset : public Object
+namespace Quantum
 {
+	class Asset : public Object
+	{
 
-};
+	};
+}
 
 #endif // !ASSET_H

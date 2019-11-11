@@ -2,11 +2,14 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
-#include "QuantumArchitecture.h"
+#include "Object.h"
 
-class Interface : public Object
+namespace Quantum
 {
+	class Interface : public Object
+	{
 
-};
+	};
+}
 
 #endif //!INTERFACE_H
