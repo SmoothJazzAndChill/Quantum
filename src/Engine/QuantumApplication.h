@@ -2,28 +2,33 @@
 #ifndef QUANTUM_APPLICATION_H
 #define QUANTUM_APPLICATION_H
 
-#include "GraphicsEngine.h"
+#include "QuantumGraphics.h"
 #include "QuantumEngine.h"
 
 class QuantumApp
 {
 public:
+	QuantumApp() {}
+
 	void Run()
 	{
 		Graphics.Initialise();
+		Game.Initialise();
+		Game.Start();
 		MainLoop();
 		Graphics.Close();
 	}
 
 private:
-	GraphicsEngine Graphics;
-	QuantumEngine Game;
+	QuantumGraphics Graphics;
+	Quantum::QuantumEngine Game;
 
 	void MainLoop()
 	{
 		while (true)
 		{
 			glfwPollEvents();
+			Game.Run();
 			Graphics.Draw();
 			
 			if (Graphics.WindowShouldClose())

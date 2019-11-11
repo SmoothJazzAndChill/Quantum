@@ -2,21 +2,32 @@
 #ifndef QUANTUM_ENGINE_H
 #define QUANTUM_ENGINE_H
 
-#include "../API/QuantumAPI.h"
+#include QuantumAPI
+#include QuantumArchitecture
 
-class QuantumEngine
+namespace Quantum
 {
-	AssetLoader Loader;
+	class QuantumEngine
+	{
+	public:
+		QuantumEngine();
 
-	std::shared_ptr<Level> CurrentLevel;
-	std::vector<std::shared_ptr<Level>> Levels;
+		std::string AssetDirectory = "src/Assets";
 
-	// Initialise
-	void Initialise() {}
+		AssetLoader Loader;
 
-	// Load Required Assets
-	void Load() {}
-};
+		std::shared_ptr<Level> CurrentLevel;
+		std::shared_ptr<LinkedList<std::shared_ptr<Level>>> Levels;
+
+		std::shared_ptr<std::vector<std::shared_ptr<System>>> Systems;
+
+		std::shared_ptr<S_Update> UpdateSystem;
+		
+		void Initialise();
+		void Start();
+		void Run();
+	};
+}
 
 
 #endif //!QUANTUM_ENGINE_H
