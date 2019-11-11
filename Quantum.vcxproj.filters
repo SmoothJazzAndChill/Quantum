@@ -25,6 +25,30 @@
     <Filter Include="Header Files\Engine">
       <UniqueIdentifier>{a40c139c-e2c9-42b2-a324-0f04e9ba25a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Architecture">
+      <UniqueIdentifier>{c1e67e47-2665-4e06-801f-6a074b686043}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\API">
+      <UniqueIdentifier>{15a7528d-c120-46c7-9927-de474d812498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{bbdf5d47-3799-4d04-b5df-53e5d656c127}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Builtin">
+      <UniqueIdentifier>{e173811a-1d2b-42a1-a869-ab43ac72b682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Builtin">
+      <UniqueIdentifier>{865f7653-4800-4c5b-a2b1-260ffebda1e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Assets">
+      <UniqueIdentifier>{b7a95811-c1c6-46f8-8548-2ffb286de9cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Assets\Textures">
+      <UniqueIdentifier>{78c56cfc-604a-4d2d-bf3e-86ddbe7a8dbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Assets\Models">
+      <UniqueIdentifier>{810cdcca-2369-4750-966f-533f8d3b230c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Architecture\Asset.h">
@@ -35,9 +59,6 @@
     </ClInclude>
     <ClInclude Include="src\API\Vector.h">
       <Filter>Header Files\API</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\GraphicsEngine.h">
-      <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\PCH.h">
       <Filter>Header Files\Engine</Filter>
@@ -87,6 +108,75 @@
     <ClInclude Include="src\Architecture\System.h">
       <Filter>Header Files\Architecture</Filter>
     </ClInclude>
+    <ClInclude Include="src\API\LinkedList.h">
+      <Filter>Header Files\API</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\C_Animation.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\C_Collider.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\C_Light.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\C_Mesh.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\C_Particles.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\C_Renderer.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\C_RigidBody.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\C_Transform.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\I_Collision.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\I_FixedUpdate.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\I_Input.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\S_Audio.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\S_Input.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\S_LevelManager.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\S_Particles.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\S_Physics.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\S_Renderer.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\S_Update.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\QuantumGraphics.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\C_Camera.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\I_ClientUpdate.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Builtin\I_HostUpdate.h">
+      <Filter>Header Files\Builtin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Shaders\Triangle.vert">
@@ -95,10 +185,36 @@
     <None Include="src\Shaders\Triangle.frag">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+    <None Include="src\API\Source\LinkedList.tpp">
+      <Filter>Source Files\API</Filter>
+    </None>
+    <None Include="src\Architecture\Source\Entity.tpp">
+      <Filter>Source Files\Architecture</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Quantum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\API\Source\Vector.cpp">
+      <Filter>Source Files\API</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Source\Maths.cpp">
+      <Filter>Source Files\API</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Source\Random.cpp">
+      <Filter>Source Files\API</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Source\Colour.cpp">
+      <Filter>Source Files\API</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Source\QuantumEngine.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\Assets\Textures\Image.jpg">
+      <Filter>Resource Files\Assets\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

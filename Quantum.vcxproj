@@ -78,6 +78,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\VulkanSDK\1.1.92.1\Include;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glm;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glfw-3.2.1.bin.WIN64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>QuantumAPI="../API/QuantumAPI.h";QuantumArchitecture="../Architecture/QuantumArchitecture.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\VulkanSDK\1.1.92.1\Lib;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glfw-3.2.1.bin.WIN64\lib-vc2015;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -98,8 +99,9 @@ call CompileShaders.bat</Command>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\VulkanSDK\1.1.92.1\Include;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glm;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glfw-3.2.1.bin.WIN64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.1.92.1\Include;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glm;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glfw-3.2.1.bin.WIN64\include;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>QuantumAPI="../API/QuantumAPI.h";QuantumArchitecture="../Architecture/QuantumArchitecture.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\VulkanSDK\1.1.92.1\Lib;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glfw-3.2.1.bin.WIN64\lib-vc2015;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -124,6 +126,7 @@ call CompileShaders.bat</Command>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\VulkanSDK\1.1.92.1\Include;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glm;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glfw-3.2.1.bin.WIN64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>QuantumAPI="../API/QuantumAPI.h";QuantumArchitecture="../Architecture/QuantumArchitecture.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -148,8 +151,9 @@ call CompileShaders.bat</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\VulkanSDK\1.1.92.1\Include;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glm;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glfw-3.2.1.bin.WIN64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\VulkanSDK\1.1.92.1\Include;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glm;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\glfw-3.2.1.bin.WIN64\include;E:\Users\Simon\Documents\Visual Studio 2017\Libraries\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>QuantumAPI="../API/QuantumAPI.h";QuantumArchitecture="../Architecture/QuantumArchitecture.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -167,11 +171,17 @@ call CompileShaders.bat</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\API\Source\Colour.cpp" />
+    <ClCompile Include="src\API\Source\Maths.cpp" />
+    <ClCompile Include="src\API\Source\Random.cpp" />
+    <ClCompile Include="src\API\Source\Vector.cpp" />
     <ClCompile Include="src\Engine\Quantum.cpp" />
+    <ClCompile Include="src\Engine\Source\QuantumEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\API\AssetLoader.h" />
     <ClInclude Include="src\API\Colour.h" />
+    <ClInclude Include="src\API\LinkedList.h" />
     <ClInclude Include="src\API\Maths.h" />
     <ClInclude Include="src\API\Physics.h" />
     <ClInclude Include="src\API\QuantumAPI.h" />
@@ -186,14 +196,44 @@ call CompileShaders.bat</Command>
     <ClInclude Include="src\Architecture\Object.h" />
     <ClInclude Include="src\Architecture\QuantumArchitecture.h" />
     <ClInclude Include="src\Architecture\System.h" />
-    <ClInclude Include="src\Engine\GraphicsEngine.h" />
+    <ClInclude Include="src\Builtin\C_Animation.h" />
+    <ClInclude Include="src\Builtin\C_Camera.h" />
+    <ClInclude Include="src\Builtin\C_Collider.h" />
+    <ClInclude Include="src\Builtin\C_Light.h" />
+    <ClInclude Include="src\Builtin\C_Mesh.h" />
+    <ClInclude Include="src\Builtin\C_Particles.h" />
+    <ClInclude Include="src\Builtin\C_Renderer.h" />
+    <ClInclude Include="src\Builtin\C_RigidBody.h" />
+    <ClInclude Include="src\Builtin\C_Transform.h" />
+    <ClInclude Include="src\Builtin\I_Collision.h" />
+    <ClInclude Include="src\Builtin\I_FixedUpdate.h" />
+    <ClInclude Include="src\Builtin\I_Input.h" />
+    <ClInclude Include="src\Builtin\I_ClientUpdate.h" />
+    <ClInclude Include="src\Builtin\I_HostUpdate.h" />
+    <ClInclude Include="src\Builtin\S_Audio.h" />
+    <ClInclude Include="src\Builtin\S_Input.h" />
+    <ClInclude Include="src\Builtin\S_LevelManager.h" />
+    <ClInclude Include="src\Builtin\S_Particles.h" />
+    <ClInclude Include="src\Builtin\S_Physics.h" />
+    <ClInclude Include="src\Builtin\S_Renderer.h" />
+    <ClInclude Include="src\Builtin\S_Update.h" />
     <ClInclude Include="src\Engine\PCH.h" />
     <ClInclude Include="src\Engine\QuantumApplication.h" />
     <ClInclude Include="src\Engine\QuantumEngine.h" />
+    <ClInclude Include="src\Engine\QuantumGraphics.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\API\Source\LinkedList.tpp">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="src\Architecture\Source\Entity.tpp">
+      <FileType>Document</FileType>
+    </None>
     <None Include="src\Shaders\Triangle.frag" />
     <None Include="src\Shaders\Triangle.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\Assets\Textures\Image.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
